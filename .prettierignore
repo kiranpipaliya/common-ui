@@ -1,0 +1,13 @@
+*.lock
+*.log
+coverage/
+dist/
+*.min.js
+build/
+*.npmrc
+*.yml
+*.DS_Store
+*.snap
+*.svg
+icons/
+bootstrap.ts

@@ -1,0 +1,24 @@
+{
+	"endOfLine": "auto",
+	"singleQuote": true,
+	"printWidth": 100,
+	"trailingcomma": "es5",
+	"bracketSpacing": true,
+	"jsxBracketSameLine": false,
+	"semi": true,
+	"useTabs": true,
+	"tabWidth": 4,
+	"plugins": ["@trivago/prettier-plugin-sort-imports", "react"],
+	"importOrder": [
+		"React$",
+		"^utils/(.(?!.*.scss))*$",
+		"^components/(.(?!.*.scss))*$",
+		"^icons/(.(?!.*.scss))*$",
+		"^stories/(.(?!.*.scss))*$",
+		"^index$",
+		"^[./]",
+		"\\.(c|le|sc)ss$"
+	],
+	"importOrderSeparation": true,
+	"importOrderParserPlugins": ["jsx", "typescript", "classProperties"]
+}
