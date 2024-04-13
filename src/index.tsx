@@ -1,11 +1,2 @@
-import React from 'react';
-
-import Button from 'components/Button';
-
-export default function index() {
-	return (
-		<div>
-			<Button variant="primary">test</Button>
-		</div>
-	);
-}
+// eslint-disable-next-line prettier/prettier
+export { type ButtonProps, Button } from 'components/ui/button';

@@ -1,6 +1,6 @@
 {
 	"root": true,
-	"env": { "browser": true, "es2020": true },
+	"env": { "browser": true, "es2021": true, "node": true },
 	"extends": [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",
@@ -10,6 +10,13 @@
 	],
 	"ignorePatterns": ["dist", ".eslintrc"],
 	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 2021,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true,
+		},
+	},
 	"plugins": ["@typescript-eslint", "prettier", "eslint-plugin-no-relative-import-paths"],
 	"rules": {
 		"prettier/prettier": 2,
@@ -27,7 +34,7 @@
 		"@typescript-eslint/no-explicit-any": "off",
 		"semi": ["error", "always"],
 		"consistent-this": [2, "self"],
-		"jsx-quotes": [0, "prefer-single"],
+		"jsx-quotes": [0, "prefer-double"],
 		"key-spacing": 2,
 		"new-cap": [2, { "capIsNew": false, "newIsCap": true }],
 		"no-console": 1,
