@@ -1,0 +1,60 @@
+name: PR Build
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
+on: 
+  pull-requests:
+    branches:
+      - main
+      - dev
+      - '*-dev'
+
+jobs:
+  Run_tests_and_build_branch:
+    runs-on: ubuntu-latest
+    name: Build PR for ${{ github.head_ref || github.ref_name}}
+    steps: 
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      with:
+        node-version-file: '.nvmrc'
+        registry-url: https://registry.npmjs.org
+        cache: 'npm'
+
+      - name: Extract branch name and version
+        shell: bash
+        run: |
+          # Short name for current branch. For PRs, use target branch (base ref)
+          GIT_BRANCH=${{ github.head_ref || github.ref_name }}
+          echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
+          echo "PACKAGE_VERSION=$(npm pkg get version | sed 's/"//g')" >> $GITHUB_ENV
+
+      - name: Install Dependencies
+        run: npm ci
+        env:
+        NPM_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Build storybook
+        run: npm run build-storybook
+
+      - name: PR Comment
+        uses: actions/github-script@v2
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: ${{ github.event.number }},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '# Preview:\n\n## [${{ env.GIT_BRANCH }}](https://shared-ui.qa.app.khoros.com/branches/${{ env.GIT_BRANCH }})'
+            })
