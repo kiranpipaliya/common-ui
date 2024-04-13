@@ -30,7 +30,7 @@
 				"functions": "always-multiline",
 			},
 		],
-		"no-unused-vars": ["error", { "varsIgnorePattern": "React$" }],
+		"no-unused-vars": ["error", { "varsIgnorePattern": "React" }],
 		"@typescript-eslint/no-explicit-any": "off",
 		"semi": ["error", "always"],
 		"consistent-this": [2, "self"],
