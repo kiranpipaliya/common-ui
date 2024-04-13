@@ -8,7 +8,7 @@ export default {
 	component: Button,
 	tags: ['autodocs'],
 	args: {
-		children: 'Click Me',
+		children: 'Click',
 	},
 	argTypes: {
 		variant: {
