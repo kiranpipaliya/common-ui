@@ -8,5 +8,5 @@ ReactDom.render(
 		<h1 className="test-style">This is how you use tailwind 😀</h1>
 		<div>Use this to run local development environment of this library</div>
 	</React.StrictMode>,
-	document.getElementById('root'),
+	document.getElementById('root')
 );

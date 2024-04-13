@@ -5,7 +5,7 @@ import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
-	AccordionTrigger,
+	AccordionTrigger
 } from 'components/ui/accordion';
 
 // Import your components
@@ -13,7 +13,7 @@ import {
 export default {
 	title: 'Accordion',
 	component: Accordion,
-	tags: ['autodocs'],
+	tags: ['autodocs']
 } as Meta;
 
 // Story for the Accordion component

@@ -2,7 +2,7 @@
 	"endOfLine": "auto",
 	"singleQuote": true,
 	"printWidth": 100,
-	"trailingcomma": "es5",
+	"trailingComma": "none",
 	"bracketSpacing": true,
 	"jsxBracketSameLine": false,
 	"semi": true,

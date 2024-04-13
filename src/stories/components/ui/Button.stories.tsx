@@ -8,22 +8,22 @@ export default {
 	component: Button,
 	tags: ['autodocs'],
 	args: {
-		children: 'Click Me',
+		children: 'Click'
 	},
 	argTypes: {
 		variant: {
 			control: 'select',
-			options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'],
+			options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link']
 		},
 		size: {
 			control: 'select',
-			options: ['default', 'sm', 'lg', 'icon'],
-		},
-	},
+			options: ['default', 'sm', 'lg', 'icon']
+		}
+	}
 };
 
 export const Primary = {
 	args: {
-		variant: 'primary',
-	},
+		variant: 'primary'
+	}
 };

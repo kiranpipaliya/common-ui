@@ -10,7 +10,7 @@ export default defineConfig({
 		alias: {
 			'@': path.resolve(__dirname, './src'),
 			components: path.resolve(__dirname, 'src/components'),
-			stories: path.resolve(__dirname, 'src/stories'),
-		},
-	},
+			stories: path.resolve(__dirname, 'src/stories')
+		}
+	}
 });
