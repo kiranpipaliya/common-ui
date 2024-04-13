@@ -9,8 +9,6 @@ on:
   pull_request:
     branches:
       - main
-      - dev
-      - '*-dev'
 
 jobs:
   Run_tests_and_build_branch:
