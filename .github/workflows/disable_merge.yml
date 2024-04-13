@@ -20,7 +20,7 @@ jobs:
               ref: context.payload.pull_request.head.sha
             });
             const failureChecks = checks.check_runs.filter(check => check.conclusion === 'failure');
-            if (failureChecks.length > 0) {
+            if (runningChecks.length > 0 || failureChecks.length > 0) {
               console.log('Disabling merge...');
               await github.pulls.update({
                 owner: context.repo.owner,
