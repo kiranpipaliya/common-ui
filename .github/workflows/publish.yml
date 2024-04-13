@@ -1,0 +1,45 @@
+name: "publish npm"
+
+on: push
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+        name: publish package
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version-file: '.nvmrc'
+                  registry-url: https://registry.npmjs.org
+                  cache: 'npm'
+            - name: Install Dependencies
+              run: npm ci
+              env:
+                  NPM_TOKKEN: ${{secrets.NPM_AUTH_TOKEN}}
+                  NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+
+            - name: Run lint
+              run: npm run lint
+
+            - name: Build
+              run: npm run build
+              
+            - name: Build storybook
+              run: npm run build-storybook
+              
+            - name: Publish package
+              run: npm publish
+              env:
+                  NPM_TOKKEN: ${{secrets.NPM_AUTH_TOKEN}}
+
+            - name: Extract tags for release
+              shell: bash
+              run: |
+                TAG_CURRENT=$(git describe --abbrev=0 --tags $(git rev-list --tags --max-count=1))
+                echo "TAG_CURRENT=$TAG_CURRENT" >> $GITHUB_ENV
+
+            - name: Create Release
+              run: gh release create ${{ env.TAG_CURRENT }} --generate-notes
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
