@@ -6,7 +6,7 @@
 		"plugin:@typescript-eslint/recommended",
 		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:react-hooks/recommended",
-		"prettier",
+		"prettier"
 	],
 	"ignorePatterns": ["dist", ".eslintrc"],
 	"parser": "@typescript-eslint/parser",
@@ -14,23 +14,16 @@
 		"ecmaVersion": 2021,
 		"sourceType": "module",
 		"ecmaFeatures": {
-			"jsx": true,
-		},
+			"jsx": true
+		}
 	},
 	"plugins": ["@typescript-eslint", "prettier", "eslint-plugin-no-relative-import-paths"],
 	"rules": {
+		"react/jsx-uses-react": "off",
+		"react/react-in-jsx-scope": "off",
 		"prettier/prettier": 2,
-		"comma-dangle": [
-			"error",
-			{
-				"arrays": "always-multiline",
-				"objects": "always-multiline",
-				"imports": "never",
-				"exports": "always-multiline",
-				"functions": "always-multiline",
-			},
-		],
 		"no-unused-vars": ["error", { "varsIgnorePattern": "React" }],
+		"@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "React" }],
 		"@typescript-eslint/no-explicit-any": "off",
 		"semi": ["error", "always"],
 		"consistent-this": [2, "self"],
@@ -66,6 +59,6 @@
 		"import/default": 0,
 		"import/namespace": 0,
 		"import/no-named-as-default": 0,
-		"no-relative-import-paths/no-relative-import-paths": ["warn", { "rootDir": "src" }],
-	},
+		"no-relative-import-paths/no-relative-import-paths": ["warn", { "rootDir": "src" }]
+	}
 }
